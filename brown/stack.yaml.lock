@@ -3,52 +3,10 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages:
-- completed:
-    hackage: HDBC-2.4.0.3@sha256:99d3de808f53271afb0a8c31adfc99c7ef94f28355aba58bb0c9dffd4376296f,2998
-    pantry-tree:
-      size: 1004
-      sha256: 4a151afa92d9d77a85b5d05583b93744bbec353b995a07daf4a4739211ced292
-  original:
-    hackage: HDBC-2.4.0.3@sha256:99d3de808f53271afb0a8c31adfc99c7ef94f28355aba58bb0c9dffd4376296f,2998
-- completed:
-    hackage: HDBC-mysql-0.7.1.0@sha256:0a10703f7fd1bd19c8061ebd6dd318acbc107d55502936ba21c1ca705ca1d790,1454
-    pantry-tree:
-      size: 463
-      sha256: 88c0deba27d970b269b603c24edb10c53966683ff914cce39d30bc77c09cc8c1
-  original:
-    hackage: HDBC-mysql-0.7.1.0@sha256:0a10703f7fd1bd19c8061ebd6dd318acbc107d55502936ba21c1ca705ca1d790,1454
-- completed:
-    hackage: relational-query-HDBC-0.7.2.0@sha256:e68a11962963628a1489b0dc6a9abae4e53c667e35d3c6eadcbb561b70d76c74,4280
-    pantry-tree:
-      size: 1867
-      sha256: 4b3f510839e2f7765a8ddefb4103afd34834e7c1d797fb904de8bb46dd8ac45a
-  original:
-    hackage: relational-query-HDBC-0.7.2.0@sha256:e68a11962963628a1489b0dc6a9abae4e53c667e35d3c6eadcbb561b70d76c74,4280
-- completed:
-    hackage: relational-record-0.2.2.0@sha256:e65080b2835aa255f636510623675f31624654d209ed9dd4fdf9c07058af92ff,1221
-    pantry-tree:
-      size: 243
-      sha256: 9ee1f83bb2df4903fe03b20ebb2844d665a99dfdde677e508a4fa19d28b2c8fb
-  original:
-    hackage: relational-record-0.2.2.0@sha256:e65080b2835aa255f636510623675f31624654d209ed9dd4fdf9c07058af92ff,1221
-- completed:
-    hackage: HDBC-session-0.1.2.0@sha256:f8552e807317c9533aab1841e474b26e5e9067191fc4657fbc330e9efe7db049,1464
-    pantry-tree:
-      size: 225
-      sha256: 55fbe0c29a030ee1c9098be2fd5865cda14da755bf063dd2560f901bde999c4e
-  original:
-    hackage: HDBC-session-0.1.2.0@sha256:f8552e807317c9533aab1841e474b26e5e9067191fc4657fbc330e9efe7db049,1464
-- completed:
-    hackage: persistable-types-HDBC-pg-0.0.3.5@sha256:0aebbd6c4ff40522f889a14b0e5a8ff8efa993d252f108e860d61c20c4894fdf,2360
-    pantry-tree:
-      size: 561
-      sha256: 21044156afafa0def37587af7ec76671743304753ce651610f9ff55d5294f064
-  original:
-    hackage: persistable-types-HDBC-pg-0.0.3.5@sha256:0aebbd6c4ff40522f889a14b0e5a8ff8efa993d252f108e860d61c20c4894fdf,2360
+packages: []
 snapshots:
 - completed:
-    size: 489011
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/15/1.yaml
-    sha256: d4ecc42b7125d68e4c3c036a08046ad0cd02ae0d9efbe3af2223a00ff8cc16f3
-  original: lts-15.1
+    size: 524104
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/5.yaml
+    sha256: 3c146eebc1b383211ea49d5422fb3d63d699da12307b4bc989107300eb579d60
+  original: lts-14.5

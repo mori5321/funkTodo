@@ -28,12 +28,12 @@ dependencies:
 - transformers
 - either
 - warp
+- HDBC
+- HDBC-mysql
 - relational-record
 - relational-query
 - relational-query-HDBC
 - template-haskell
-- HDBC
-- HDBC-mysql
 
 
 default-extensions:
