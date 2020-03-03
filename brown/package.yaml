@@ -28,16 +28,23 @@ dependencies:
 - transformers
 - either
 - warp
+- relational-record
+- relational-query
+- relational-query-HDBC
+- template-haskell
+- HDBC
+- HDBC-mysql
 
 
 default-extensions:
-    - OverloadedStrings
-    - DeriveGeneric
-    - DeriveAnyClass
-    - TypeOperators
-    - DataKinds
-    - DerivingVia
-    - StandaloneDeriving
+- OverloadedStrings
+- DeriveGeneric
+- DeriveAnyClass
+- TypeOperators
+- DataKinds
+- DerivingVia
+- StandaloneDeriving
+- TemplateHaskell
 
 library:
   source-dirs: src
