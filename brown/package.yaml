@@ -34,7 +34,8 @@ dependencies:
 - relational-query
 - relational-query-HDBC
 - template-haskell
-
+- resource-pool
+- monad-logger
 
 default-extensions:
 - OverloadedStrings
@@ -45,6 +46,8 @@ default-extensions:
 - DerivingVia
 - StandaloneDeriving
 - TemplateHaskell
+- MultiParamTypeClasses
+- FlexibleInstances
 
 library:
   source-dirs: src

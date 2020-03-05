@@ -1,6 +1,3 @@
-{-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE DataKinds #-}
-
 module App
     ( app
     )
@@ -9,12 +6,14 @@ where
 import           Handlers.TodoHandler           ( TodosAPI
                                                 , todosHandler
                                                 )
-
+import           Control.Monad.Trans.Reader     ( runReaderT )
+import           Control.Monad.Logger           ( runStdoutLoggingT )
 import           Servant                        ( (:>)
                                                 , Server
                                                 , serve
                                                 , Application
                                                 , Proxy(..)
+                                                , hoistServer
                                                 )
 import           Network.Wai.Handler.Warp       ( runSettings
                                                 , defaultSettings
@@ -22,20 +21,32 @@ import           Network.Wai.Handler.Warp       ( runSettings
                                                 , setLogger
                                                 )
 
+import           Data.Pool                      ( Pool
+                                                , createPool
+                                                )
+import           DataModels.DataSource          ( connect )
+import           Database.HDBC.MySQL            ( Connection )
+import           Database.HDBC                  ( disconnect )
+
 type API = "todos" :> TodosAPI
 
 api :: Proxy API
 api = Proxy
 
-application :: Application
-application = serve api server
+makeApp :: IO Application
+makeApp = do
+    pool <- createPool connect disconnect 1 1 5
+    pure $ serve api $ server pool
 
-server = todosHandler
+server :: Pool Connection -> Server API
+server pool =
+    hoistServer api (flip runReaderT pool) todosHandler
 
 app :: IO ()
 app = do
     putStrLn $ "running server on port: " <> show port
-    runSettings settings application
+    app <- makeApp
+    runSettings settings app
   where
     port     = 8080
     settings = setPort port $ defaultSettings

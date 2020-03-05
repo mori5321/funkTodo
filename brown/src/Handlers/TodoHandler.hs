@@ -16,6 +16,8 @@ import           Servant.Server                 ( Server )
 import           DomainObjects.Todo             ( Todo
                                                 , makeTodo
                                                 )
+import           Handlers.Common                ( Handler )
+
 
 type TodosAPI = Get '[JSON] [Todo]
       -- :<|> "todo" :> Capture "todoID" TodoID :> Get '[JSON] Todo
@@ -28,5 +30,5 @@ todosList =
     , makeTodo "3" "Cook Dinner"          False
     ]
 
-todosHandler :: Server TodosAPI
+todosHandler :: Handler [Todo]
 todosHandler = listTodos where listTodos = pure todosList
