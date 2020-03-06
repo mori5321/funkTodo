@@ -1,4 +1,4 @@
-module DataModels.DataSource
+module Infra.DataModels.DataSource
     ( connect
     , defineTable
     )

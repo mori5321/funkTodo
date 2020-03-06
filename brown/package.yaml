@@ -36,6 +36,7 @@ dependencies:
 - template-haskell
 - resource-pool
 - monad-logger
+- persistable-record
 
 default-extensions:
 - OverloadedStrings
@@ -48,6 +49,9 @@ default-extensions:
 - TemplateHaskell
 - MultiParamTypeClasses
 - FlexibleInstances
+- FlexibleContexts
+- BlockArguments
+
 
 library:
   source-dirs: src

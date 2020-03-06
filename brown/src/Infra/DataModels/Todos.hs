@@ -1,8 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-module DataModels.Todos where
+module Infra.DataModels.Todos where
 
 import           Data.Int                       ( Int32 )
-import           DataModels.DataSource          ( defineTable )
+import           Infra.DataModels.DataSource          ( defineTable )
 
 $(defineTable "todos")

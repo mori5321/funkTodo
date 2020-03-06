@@ -1,5 +1,5 @@
-module DomainObjects.Todo.Done
-    ( Done(..)
+module Domain.ValueObjects.Todo.Body
+    ( Body(..)
     )
 where
 
@@ -7,4 +7,4 @@ import           GHC.Generics                   ( Generic )
 import           Data.Aeson                     ( FromJSON
                                                 , ToJSON
                                                 )
-newtype Done = Done Bool deriving (FromJSON, ToJSON, Generic, Show)
+newtype Body = Body String deriving (FromJSON, ToJSON, Generic, Show)

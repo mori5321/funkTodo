@@ -3,9 +3,9 @@ module App
     )
 where
 
-import           Handlers.TodoHandler           ( TodosAPI
-                                                , todosHandler
-                                                )
+import           Handlers.TodoHandler           ( TodosAPI )
+import qualified Handlers.TodoHandler          as TodoHandler
+                                                ( handler )
 import           Control.Monad.Trans.Reader     ( runReaderT )
 import           Control.Monad.Logger           ( runStdoutLoggingT )
 import           Servant                        ( (:>)
@@ -24,7 +24,7 @@ import           Network.Wai.Handler.Warp       ( runSettings
 import           Data.Pool                      ( Pool
                                                 , createPool
                                                 )
-import           DataModels.DataSource          ( connect )
+import           Infra.DataModels.DataSource          ( connect )
 import           Database.HDBC.MySQL            ( Connection )
 import           Database.HDBC                  ( disconnect )
 
@@ -39,8 +39,7 @@ makeApp = do
     pure $ serve api $ server pool
 
 server :: Pool Connection -> Server API
-server pool =
-    hoistServer api (flip runReaderT pool) todosHandler
+server pool = hoistServer api (flip runReaderT pool) TodoHandler.handler
 
 app :: IO ()
 app = do
