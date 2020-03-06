@@ -15,9 +15,9 @@ import           Data.Proxy                     ( Proxy(..) )
 import           Servant.API
 import           Servant.Server                 ( Server )
 
-import qualified Infra.DataModels.Todos              as Todos
-import           Infra.DataModels.Todos               ( Todos(..) )
-import           Domain.ValueObjects.Todo             ( Todo
+import qualified Infra.DataModels.Todos        as Todos
+import           Infra.DataModels.Todos         ( Todos(..) )
+import           Domain.ValueObjects.Todo       ( Todo
                                                 , makeTodo
                                                 )
 import           Handlers.Common                ( Handler
@@ -30,6 +30,7 @@ import           GHC.Int                        ( Int32 )
 
 type TodosAPI = Get '[JSON] [Todo]
       -- :<|> "todo" :> Capture "todoID" TodoID :> Get '[JSON] Todo
+
 
 
 -- todosHandler :: Handler [Todo]
