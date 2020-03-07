@@ -1,6 +1,7 @@
 module Domain.ValueObjects.Todo
     ( Todo
     , makeTodo
+    , TodoID
     )
 where
 
@@ -9,9 +10,11 @@ import           Data.Aeson                     ( FromJSON
                                                 , ToJSON
                                                 )
 import           GHC.Generics                   ( Generic )
-import           Domain.ValueObjects.Todo.ID          ( ID(..) )
-import           Domain.ValueObjects.Todo.Body        ( Body(..) )
-import           Domain.ValueObjects.Todo.Done        ( Done(..) )
+import           Domain.ValueObjects.Todo.ID    ( ID(..) )
+import           Domain.ValueObjects.Todo.Body  ( Body(..) )
+import           Domain.ValueObjects.Todo.Done  ( Done(..) )
+
+type TodoID = ID
 
 data Todo = MkTodo { todoID :: ID
                  , body :: Body
