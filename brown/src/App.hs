@@ -24,7 +24,7 @@ import           Network.Wai.Handler.Warp       ( runSettings
 import           Data.Pool                      ( Pool
                                                 , createPool
                                                 )
-import           Infra.DataModels.DataSource          ( connect )
+import           Infra.DataModels.DataSource    ( connect )
 import           Database.HDBC.MySQL            ( Connection )
 import           Database.HDBC                  ( disconnect )
 
@@ -48,4 +48,4 @@ app = do
     runSettings settings app
   where
     port     = 8080
-    settings = setPort port $ defaultSettings
+    settings = setPort port defaultSettings

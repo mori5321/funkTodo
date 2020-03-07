@@ -16,13 +16,13 @@ import           Domain.ValueObjects.Todo.Done  ( Done(..) )
 
 type TodoID = ID
 
-data Todo = MkTodo { todoID :: ID
+data Todo = Mk { id :: ID
                  , body :: Body
                  -- , done :: Done
                  } deriving (Show, Generic, FromJSON, ToJSON)
 
 makeTodo :: Int32 -> String -> Todo
-makeTodo todoID body = MkTodo todoID' body'
+makeTodo todoID body = Mk todoID' body'
   where
     todoID' = ID todoID
     body'   = Body body
