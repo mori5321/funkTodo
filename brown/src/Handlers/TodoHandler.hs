@@ -1,5 +1,5 @@
 module Handlers.TodoHandler
-    ( TodosAPI
+    ( API
     , handler
     )
 where
@@ -23,7 +23,7 @@ import qualified Handlers.TodoHandler.List     as List
                                                 , handler
                                                 )
 
-type TodosAPI = List.API
+type API = List.API
       -- :<|> "todo" :> Capture "todoID" TodoID :> Get '[JSON] Todo
 
 

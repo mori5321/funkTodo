@@ -3,9 +3,10 @@ module App
     )
 where
 
-import           Handlers.TodoHandler           ( TodosAPI )
 import qualified Handlers.TodoHandler          as TodoHandler
-                                                ( handler )
+                                                ( API
+                                                , handler
+                                                )
 import           Control.Monad.Trans.Reader     ( runReaderT )
 import           Control.Monad.Logger           ( runStdoutLoggingT )
 import           Servant                        ( (:>)
@@ -20,15 +21,14 @@ import           Network.Wai.Handler.Warp       ( runSettings
                                                 , setPort
                                                 , setLogger
                                                 )
-
 import           Data.Pool                      ( Pool
                                                 , createPool
                                                 )
-import           Infra.DataModels.DataSource    ( connect )
 import           Database.HDBC.MySQL            ( Connection )
 import           Database.HDBC                  ( disconnect )
+import           Infra.DataModels.DataSource    ( connect )
 
-type API = "todos" :> TodosAPI
+type API = "todos" :> TodoHandler.API
 
 api :: Proxy API
 api = Proxy
@@ -48,4 +48,4 @@ app = do
     runSettings settings app
   where
     port     = 8080
-    settings = setPort port defaultSettings
+    settings = setPort port $ defaultSettings

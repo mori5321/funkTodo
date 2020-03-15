@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 module Handlers.Common
-    ( runRepository
+    ( runUseCase
     , Handler
     )
 where
@@ -16,11 +16,15 @@ import           Data.Pool                      ( Pool )
 import           Database.HDBC.MySQL            ( Connection )
 import qualified Servant
 
-import           Domain.Repositories.Repository ( Repository )
+import           UseCases.UseCase               ( UseCase )
+import           Domain.Repositories.Repository ( Repository
+                                                , ConnectionPoolReaderT
+                                                )
 
-type Handler = ReaderT (Pool Connection) Servant.Handler
+type Handler a = ConnectionPoolReaderT Servant.Handler a
 
-runRepository :: Repository a -> Handler a
-runRepository repo = do
+runUseCase :: UseCase a -> Handler a
+runUseCase usecase = do
     pool <- ask
-    liftIO $ runReaderT repo pool
+    liftIO $ runReaderT usecase pool
+
