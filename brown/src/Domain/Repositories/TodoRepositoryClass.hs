@@ -11,3 +11,4 @@ import           Domain.Repositories.Repository ( Repository )
 
 class TodoRepositoryClass a where
    list :: a -> Repository [Todo]
+   store :: a -> Todo -> Repository ()

@@ -23,12 +23,11 @@ import           Domain.Repositories.TodoRepositoryClass
                                                 , list
                                                 )
 
+
+data Repositories =  forall repo . TodoRepositoryClass repo
+                    => Repositories { todoRepository :: repo }
 data Input = Input {}
-data Repositories =  forall a . TodoRepositoryClass a
-                    => Repositories { todoRepository :: a
-                                    }
-data Output = Output { todos :: [Todo]
-                     }
+data Output = Output { todos :: [Todo] }
 
 execute :: Repositories -> Input -> UseCase Output
 execute Repositories { todoRepository = todoRepository } input = do

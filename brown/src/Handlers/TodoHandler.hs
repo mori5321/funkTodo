@@ -6,6 +6,12 @@ where
 
 import           Prelude                 hiding ( id )
 import           Servant.API
+import           Servant                        ( Server
+                                                , Proxy(..)
+                                                , hoistServer
+                                                , serve
+                                                )
+import qualified Servant
 import           Domain.ValueObjects.Todo       ( Todo )
 import           Handlers.Common                ( Handler )
 import           Infra.Repositories.TodoRepository
@@ -22,10 +28,12 @@ import qualified Handlers.TodoHandler.List     as List
                                                 ( API
                                                 , handler
                                                 )
+import qualified Handlers.TodoHandler.Create   as Create
+                                                ( API
+                                                , handler
+                                                )
 
-type API = List.API
+type API = List.API :<|> Create.API
       -- :<|> "todo" :> Capture "todoID" TodoID :> Get '[JSON] Todo
 
-
-handler :: Handler [Todo]
-handler = List.handler
+handler = List.handler :<|> Create.handler

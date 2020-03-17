@@ -37,6 +37,7 @@ dependencies:
 - resource-pool
 - monad-logger
 - persistable-record
+- mtl
 
 default-extensions:
 - OverloadedStrings
@@ -51,7 +52,7 @@ default-extensions:
 - FlexibleInstances
 - FlexibleContexts
 - BlockArguments
-
+- NamedFieldPuns
 
 library:
   source-dirs: src

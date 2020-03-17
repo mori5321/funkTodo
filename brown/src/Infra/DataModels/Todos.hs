@@ -1,8 +1,29 @@
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 
-module Infra.DataModels.Todos where
+module Infra.DataModels.Todos
+    ( Todos(..)
+    , insertTodos
+    , todos
+    , convert
+    , adapt
+    )
+where
 
+import           Prelude                        ( Maybe(Nothing) )
 import           Data.Int                       ( Int32 )
-import           Infra.DataModels.DataSource          ( defineTable )
+import           Infra.DataModels.DataSource    ( defineTable )
+import qualified Domain.ValueObjects.Todo      as Todo
+import           Domain.ValueObjects.Todo       ( Todo
+                                                , makeTodo
+                                                , unwrapTodo
+                                                )
 
 $(defineTable "todos")
+
+convert :: Todos -> Todo
+convert Todos { id, body } = makeTodo id body
+
+adapt :: Todo -> Todos
+adapt todo = Todos { id, body, doneAt = Nothing }
+    where (id, body) = unwrapTodo todo

@@ -1,3 +1,5 @@
+{-# LANGUAGE ExistentialQuantification #-}
+
 module UseCases.UseCase where
 
 import           Data.Pool                      ( Pool )
@@ -8,6 +10,10 @@ import           Control.Monad.Trans.Reader     ( ask
                                                 , ReaderT
                                                 , runReaderT
                                                 )
+import           Control.Monad                  ( liftM )
+import           Control.Monad.IO.Class         ( liftIO )
+import           Control.Monad.Trans.Class      ( lift )
+
 
 type UseCase a = Repository a
 

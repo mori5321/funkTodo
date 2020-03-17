@@ -23,6 +23,7 @@ import           Domain.Repositories.Repository ( Repository
 
 type Handler a = ConnectionPoolReaderT Servant.Handler a
 
+-- UseCase型をMonadにしてしまえば、複数のUseCaseをさばけるrunUseCaseができる気がする
 runUseCase :: UseCase a -> Handler a
 runUseCase usecase = do
     pool <- ask
