@@ -25,5 +25,5 @@ convert :: Todos -> Todo
 convert Todos { id, body } = makeTodo id body
 
 adapt :: Todo -> Todos
-adapt todo = Todos { id, body, doneAt = Nothing }
+adapt todo = Todos { id = id, body = body, doneAt = Nothing }
     where (id, body) = unwrapTodo todo
