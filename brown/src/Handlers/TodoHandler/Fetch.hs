@@ -30,11 +30,11 @@ handler :: Int32 -> Handler Todo
 handler id = do
     let input        = FetchTodoById.Input { todoID = todoID }
     let repositories = FetchTodoById.Repositories TodoRepository
+
     FetchTodoById.Output { mTodo } <- runUseCase
         $ FetchTodoById.execute repositories input
 
-    -- TODO: Nothingなら404を返却する
     case mTodo of
-        Nothing   -> throwError $ err404 { errBody = "Oops..." }
         Just todo -> pure todo
+        Nothing   -> throwError $ err404 { errBody = "Oops..." }
     where todoID = ID id
