@@ -39,7 +39,7 @@ makeApp = do
     pure $ serve api $ server pool
 
 server :: Pool Connection -> Server API
-server pool = hoistServer api (flip runReaderT pool) TodoHandler.handler
+server pool = hoistServer api (flip runReaderT pool) $ TodoHandler.handler
 
 app :: IO ()
 app = do

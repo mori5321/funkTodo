@@ -32,8 +32,12 @@ import qualified Handlers.TodoHandler.Create   as Create
                                                 ( API
                                                 , handler
                                                 )
+import qualified Handlers.TodoHandler.Fetch    as Fetch
+                                                ( API
+                                                , handler
+                                                )
 
-type API = List.API :<|> Create.API
+type API = List.API :<|> Create.API :<|> Fetch.API
       -- :<|> "todo" :> Capture "todoID" TodoID :> Get '[JSON] Todo
 
-handler = List.handler :<|> Create.handler
+handler = List.handler :<|> Create.handler :<|> Fetch.handler

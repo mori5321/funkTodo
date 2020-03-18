@@ -38,6 +38,7 @@ dependencies:
 - monad-logger
 - persistable-record
 - mtl
+- sql-words
 
 default-extensions:
 - OverloadedStrings
